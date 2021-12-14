@@ -46,11 +46,30 @@ class Dashboard extends CI_Controller
     }
     public function pembayaran()
     {
-        $data['judul'] = 'Pembayaran';
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_');
-        $this->load->view('pembayaran');
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Nama Harus diisi'
+        ]);
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+            'required' => 'Alamat Harus diisi'
+        ]);
+        $this->form_validation->set_rules('nhp', 'No Hp', 'required', [
+            'required' => 'No Hp Harus diisi'
+        ]);
+        $this->form_validation->set_rules('jasa', 'Jasa', 'required', [
+            'required' => 'Tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('bank', 'Bank', 'required', [
+            'required' => 'Tidak boleh kosong'
+        ]);
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Pembayaran';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar_');
+            $this->load->view('pembayaran');
+            $this->load->view('templates/footer');
+        } else {
+            redirect('dashboard/pembayaran');
+        }
     }
     public function proses_pesanan()
     {

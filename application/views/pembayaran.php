@@ -18,34 +18,41 @@
                 <div class="from-group text-left mb-2">
                     <label for="">Nama Lengkap</label>
                     <input type="text" name="nama" id="" placeholder="Masukkan Nama" class="form-control">
+                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                 </div>
                 <div class="from-group text-left  mb-2">
                     <label for="">Alamat Lengkap</label>
                     <input type="text" name="alamat" id="" placeholder="Masukkan Alamat" class="form-control">
+                    <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>') ?>
                 </div>
                 <div class="from-group text-left  mb-2">
                     <label for="">No Telpon</label>
-                    <input type="tel" name="nhp" id="" placeholder="Masukkan Nomer" class="form-control">
+                    <input type="number" name="nhp" id="" placeholder="Masukkan Nomer" class="form-control">
+                    <?= form_error('nhp', '<small class="text-danger pl-3">', '</small>') ?>
                 </div>
                 <div class="from-group text-left  mb-2">
                     <label for="">Jasa Pengiriman</label>
-                    <select class="form-control">
+                    <select class="form-control" name="jasa">
+                        <option value="#">Pilih Jasa</option>
                         <option value="JNE">JNE</option>
                         <option value="J&T">J&T</option>
                         <option value="Sicepat">Sicepat </option>
                     </select>
+                    <?= form_error('jasa', '<small class="text-danger pl-3">', '</small>') ?>
                 </div>
                 <div class="from-group text-left  mb-4">
                     <label for="">Pilh BANK</label>
-                    <select class="form-control">
+                    <select class="form-control" name="bank">
                         <option value="BCA">BCA</option>
                         <option value="BRI">BRI</option>
                         <option value="MANDIRI">MANDIRI </option>
                     </select>
+                    <?= form_error('bank', '<small class="text-danger pl-3">', '</small>') ?>
                 </div>
                 <button class="btn btn-sm btn-primary mb-3" type="submit">
                     Pesan
                 </button>
+                <a class="btn btn-sm btn-danger mb-3" href="<?= base_url('dashboard/detail_keranjang') ?>">Batal</a>
             </form>
         <?php
                 } else {
